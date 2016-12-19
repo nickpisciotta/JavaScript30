@@ -33,18 +33,27 @@ function draw(e) {
   ctx.stroke(); 
   [lastX, lastY] = [e.offsetX, e.offsetY];
   hue++; 
+  hueCheck();
+  changeLineWidth(); 
+}
+
+function hueCheck() {
   if (hue >= 360) {
-    hue = 0; 
+    hue = 0;   
   }
+} 
+
+function changeLineWidth() {
   if (ctx.lineWidth >= 80 || ctx.lineWidth <=1 ) {
     direction = !direction; 
   }
   if (direction) {
     ctx.lineWidth++; 
   } else {
-    ctx.lineWidth--; 
+    ctx.lineWidth--;  
   }
-}
+} 
+ 
  
 canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("mousedown", (e) => {
